@@ -16,6 +16,11 @@ import { RegisterComponent } from './login/register.component';
 import { FormsModule } from '@angular/forms';
 
 
+//Sevices
+import { ServiceModule } from './services/service.module';
+
+
+
 
 
 @NgModule({
@@ -30,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     APP_ROUTES,
     PageModule,
-    FormsModule
+    FormsModule,
+    ServiceModule
   ],
   
   providers: [],
