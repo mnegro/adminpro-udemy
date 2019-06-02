@@ -59,6 +59,6 @@ export class ProfileComponent implements OnInit {
 
   cambiarImagen(){
 
-    this._usuarioService.cambiarImagen( this.imagenSubir, this.usuario.id );
+    this._usuarioService.cambiarImagen( this.imagenSubir, this.usuario._id );
   }
 }
