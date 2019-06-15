@@ -19,6 +19,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = this._usuarioServive.usuario;
+    this._sidebar.cargarMEnu();
   }
 
   
