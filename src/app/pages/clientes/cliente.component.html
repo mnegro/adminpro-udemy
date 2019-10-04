@@ -1,0 +1,108 @@
+<div class="row animated fadeIn">
+  <div class="col-md-6">
+    <div class="card card-body">
+        <h3 class="box-title m-b-0">Cliente: {{ cliente.nombre }}</h3>
+        <div class="row">
+            <div class="col-sm-12col-xs-12">
+                <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarCliente(f)">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input [(ngModel)]="cliente.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del Cliente" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Apellido</label>
+                      <input [(ngModel)]="cliente.apellido" name="apellido" type="text" class="form-control" placeholder="Apellido del Cliente" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Cuit</label>
+                      <input [(ngModel)]="cliente.cuit" name="cuit" type="text" class="form-control" placeholder="Cuit del Cliente" required>
+                    </div>
+                  
+                    <div class="form-group">
+                      <label>Localidad</label>
+                      <input [(ngModel)]="cliente.localidad" name="localidad" type="text" class="form-control" placeholder="Localidad del Cliente" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Direccion</label>
+                      <input [(ngModel)]="cliente.direccion" name="direccion" type="text" class="form-control" placeholder="Direccion del Cliente" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input [(ngModel)]="cliente.email" name="email" type="email" class="form-control" placeholder="Emaile del Cliente" required>
+                    </div>
+                  
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                    <a routerLink="/clientes" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6" *ngIf="cliente._id">
+    <div class="card card-body">
+        <h4 class="box-title m-b-0">Maquinas</h4>
+
+
+      <div *ngIf="maquinas.length > 0">
+
+          <table  class="table table-responsive">
+              <thead>
+                <tr>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Serie</th>
+                  <th>Acciones</th>
+                  <th></th>
+                </tr>
+              </thead>
+ 
+              <tbody>
+                <tr *ngFor="let maquina of maquinas">
+                  <td>
+                    {{ maquina.marca }}
+                  </td>
+                  <td> 
+                    {{ maquina.modelo }}
+                  </td>
+                  <td>
+                    {{ maquina.serie }}
+                  </td>
+                  <td>
+                    <button [routerLink]="['/maquina', maquina._id ]" class="btn btn-primary">
+                        <i class="fa fa-edit"></i>
+                      </button>
+                       
+                  </td>
+                  <td>
+                       <button [routerLink]="['/reparaciones', maquina._id ]" class="btn btn-info">
+                        <i class="fa fa-wrench"></i>
+                    </button>
+                 </td>
+                                  
+                 </tr>
+              </tbody>
+ 
+            </table>
+      </div>
+       
+        <button  (click)= "agregarMaquina(cliente)" class="btn btn-primary">
+          Agregar maquina
+          <i class="fa fa-plus"></i>
+        </button>
+        <!-- <img (click)="cambiarFoto()" [src]="medico.img | imagen: 'medico'" class="img-circle img-fluid pointer"> -->
+       
+          
+    </div> 
+
+  
+</div>
+
+</div>

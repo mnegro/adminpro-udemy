@@ -1,0 +1,117 @@
+<div class="row animated fadeIn">
+    <div class="col-md-6">
+      <div class="card card-body">
+          <h3 class="box-title m-b-0">Cliente:</h3>
+          <div class="row">
+              <div class="col-sm-12col-xs-12">
+                  <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarSaldo(f)">
+                      <div class="form-group">
+                          <label>Fecha</label>
+                          <input [(ngModel)]="saldo.fecha" name="fecha" type="date" class="form-control" placeholder="Nombre del Cliente" required>
+                      </div>
+  
+                      <div class="form-group">
+                          <label>Forma de Pago</label>
+                        <select #s [(ngModel)]="modalidad" (ngModelChange)="seleccionPago($event)"  name="pago" class="form-control" required>
+                              <option [value]="i" *ngFor="let i of formasdePago">{{i}}</option>
+                        </select>
+                      </div>
+                    
+                    
+                      <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                      <i class="fa fa-save"></i>
+                        Guardar
+                      </button>
+                      <a routerLink="/clientes" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+  <!-- ===============================================================================================
+  ===========================================Efectivo============================================
+  =============================================================================================== -->
+
+  <div class="row animated fadeIn" *ngIf="esefectivo">
+        <div class="col-md-6">
+          <div class="card card-body">
+              <h3 class="box-title m-b-0">Efectivo:</h3>
+              <div class="row">
+                  <div class="col-sm-12col-xs-12">
+                <form #f2="ngForm" ngNativeValidate >
+
+                      <div class="form-group">
+                          <label>Importe</label>
+                          <input [(ngModel)]="efectivo.importe" name="importe" type="number" class="form-control" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Moneda</label>
+                      <select [(ngModel)]="efectivo.moneda"  name="moneda" class="form-control" required>
+                            <option value=Pesos>$(Pesos)</option>
+                             <option value=Dolar>u$s(Dolar)</option>
+                      </select>
+                    </div>
+                    <button type="button" (click)="agrgarEfectivo(f2)" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-check"></i>
+                              Cargar
+                     </button>
+                    <button type="button" (click)="cerrarFormEfectivo(f2)" class="btn btn-inverse waves-effect waves-light">
+                            <i class="fa fa-close"></i>
+                              Cerrar
+                     </button>
+                </form>
+                </div>
+          </div>
+      </div>
+  </div>
+  </div>
+
+    <!-- ===============================================================================================
+  ===========================================Cheque============================================
+  =============================================================================================== -->
+
+  <div class="row animated fadeIn" *ngIf="escheque">
+        <div class="col-md-6">
+          <div class="card card-body">
+              <h3 class="box-title m-b-0">Cheque:</h3>
+              <div class="row">
+                  <div class="col-sm-12col-xs-12">
+                <form #f3="ngForm" ngNativeValidate>
+
+                      <div class="form-group">
+                          <label>Fecha</label>
+                          <input [(ngModel)]="cheque.fecha" name="fecha" type="date" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                          <label>Banco</label>
+                          <input [(ngModel)]="cheque.banco" name="banco" type="text" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                          <label>Numero Cheque</label>
+                          <input [(ngModel)]="cheque.numero" name="numero" type="number" class="form-control"  required>
+                      </div>
+                      <div class="form-group">
+                          <label>Detalle</label>
+                          <input [(ngModel)]="cheque.detalle" name="detalle" type="text" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                          <label>Importe</label>
+                          <input [(ngModel)]="cheque.importe" name="importe" type="number" class="form-control" required>
+                      </div>
+                      <button type="button" (click)="agrgarCheque(f3)" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-check"></i>
+                              Cargar
+                      </button>
+                      <button type="button" (click)="cerrarFormCheque(f3)" class="btn btn-inverse waves-effect waves-light">
+                            <i class="fa fa-close"></i>
+                              Cerrar
+                      </button>
+                      
+                </form>
+                </div>
+          </div>
+      </div>
+  </div>
+  </div>

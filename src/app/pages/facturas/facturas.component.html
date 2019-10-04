@@ -1,0 +1,124 @@
+<div>
+
+  <div class="row animated fadeIn">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title"> Desde </h3>
+          <input [(ngModel)]="fechaDesde"   type="date" class="form-control" placeholder="Buscar Factura desde...">
+
+        </div>
+      </div>
+  
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title"> Hasta </h3>
+          <input [(ngModel)]="fechaFin"   type="date" class="form-control" placeholder="Buscar Factura hasta...">
+
+        </div>
+      </div>
+  
+    </div>
+    <div class="col-12">
+    <div class="card">
+      <button type="button" class="btn btn-outline-success" (click)="buscarFecha()">
+        Buscar 
+      </button>
+    </div>
+
+    </div>
+
+  </div>
+  
+  
+  <div class="row animated fadeIn" *ngIf="cargando">
+  
+    <div class="col-sm-12">
+  
+      <div class="alert alert-warning text-center"> 
+        <strong>Cargando</strong>
+        <br>
+        <i class="fa fa-refresh fa-spin fa-2x"></i>
+        <br>
+        <span>Espere por favor</span>
+      </div>
+  
+      </div>
+   </div>
+   
+  
+  
+  <div class="row" *ngIf="facturas.length > 0" >
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+  
+             <h3 class="card-title"> Facturas </h3>
+             <table class="table table-responsive">
+               <thead>
+                 <tr>
+                   <th>Fecha</th>
+                   <th>Detalle</th>
+                   <th>Cliente</th>
+                   <th>Estado</th>
+                   <th>A Cuenta</th>
+                   <th>Total</th>
+                 </tr>
+               </thead>
+  
+               <tbody>
+                 <tr *ngFor="let factura of facturas">
+                   <td>
+                     {{ factura.fecha | date: 'dd-MM-yyyy'}}
+                   </td>
+                   <td *ngIf="factura.detalle !=null">
+                      <button type="button" class="btn btn-outline-info" (click)="verDetalle(factura,'facturaAlquilada')">
+                        Ver Detalle
+                      </button>
+                    </td>
+                   <td *ngIf="factura.reparacion !=null">
+                      <button type="button" class="btn btn-outline-info" (click)="verDetalle(factura.reparacion,'facturaCliente')">
+                        Ver Reparacion
+                      </button>
+                    </td>
+                   <td>
+                     {{ factura.cliente.nombre }}
+                   </td>
+                   <td>
+                     {{ factura.paga }}
+                   </td>
+                   <td>
+                     {{ factura.aCuenta }}
+                   </td>
+                   <td>
+                     {{ factura.total }}
+                   </td>
+                   
+                </tr>
+               </tbody>
+  
+             </table>
+             <button (click)="cambiarDesde(-7)" class="btn btn-secondary">
+                Anteriores
+              </button>
+              
+    
+              <button (click)="cambiarDesde(7)" class="btn btn-secondary">
+                  Siguientes
+              </button>
+    
+            </div>
+      </div>
+  
+    </div>
+  
+  
+  </div>
+</div>
+
+<div class=" alert alert-info" *ngIf="facturas.length === 0">
+  No hay registros
+</div>

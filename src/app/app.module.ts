@@ -18,6 +18,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Sevices
 import { ServiceModule } from './services/service.module';
+import { PagesComponent } from './pages/pages.component';
+import { SharedModule } from './shared/shared.module';
+import { ModalMaquinaComponent } from './components/modal-maquina/modal-maquina.component';
+import { ModalDetalleComponent } from './components/modal-detalle/modal-detalle.component';
 
 
 
@@ -28,20 +32,25 @@ import { ServiceModule } from './services/service.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
-   
+    RegisterComponent,
+    PagesComponent,
+    ModalMaquinaComponent,
+    ModalDetalleComponent
+       
   ],
 
   imports: [
     BrowserModule,
     APP_ROUTES,
-    PageModule,
     FormsModule,
     ReactiveFormsModule,
-    ServiceModule
+    ServiceModule,
+    SharedModule
   ],
   
-  providers: [],
+  providers: [
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

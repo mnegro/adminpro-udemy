@@ -1,0 +1,101 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <input #input (keyup)="buscarRepuesto( input.value )" type="text" class="form-control" placeholder="Buscar repuesto...">
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="cargando">
+
+  <div class="col-sm-12">
+
+    <div class="alert alert-warning text-center"> 
+      <strong>Cargando</strong>
+      <br>
+      <i class="fa fa-refresh fa-spin fa-2x"></i>
+      <br>
+      <span>Espere por favor</span>
+    </div>
+
+    </div>
+ </div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+          <div class="text-right">
+              <button [routerLink]="['/repuesto', 'nuevo' ]" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+             <i class="fa fa-plus"></i>
+             Cargar Repuesto
+           </button>
+           </div> 
+
+           
+
+           <h3 class="card-title"> Repuestos Registrados (<small> {{ _repuestoService.totalRegistros }} </small>)</h3>
+           <table class="table table-responsive">
+             <thead>
+               <tr>
+                 <th>Codigo</th>
+                 <th>Tipo</th>
+                 <th>Marca</th>
+                 <th>Detalle</th>
+                 <th>Editar</th>
+                 <th>Eliminar</th>
+                 <th></th>
+               </tr>
+             </thead>
+
+             <tbody>
+               <tr *ngFor="let repuesto of repuestos">
+                 <td>
+                   {{ repuesto.codigo }}
+                 </td>
+                 <td>
+                  {{ repuesto.tipo }}
+                </td>
+                <td>
+                  {{ repuesto.marca }}
+                </td>    
+                 <td>
+                  <button (click)="verDetalle(repuesto,'repuesto')" class="btn btn-primary">
+                    <i class="fa fa-eye"></i>
+                    Ver mas...
+                  </button>
+                  </td>
+                 <td>
+                    <button [routerLink]="['/repuesto', repuesto._id ]" class="btn btn-primary">
+                        <i class="fa fa-edit"></i>
+                      </button>
+                  </td>
+                  <td>    
+                      <button (click)="borrarRepuesto( repuesto )" class="btn btn-danger">
+                          <i class="fa fa-trash-o"></i>
+                       </button>
+                 </td>
+              </tr>
+             </tbody>
+
+           </table>
+           <button (click)="cambiarDesde(-7)" class="btn btn-secondary">
+            Anteriores
+          </button>
+          
+
+          <button (click)="cambiarDesde(7)" class="btn btn-secondary">
+              Siguientes
+          </button>
+          </div>
+    </div>
+
+  </div>
+
+</div>

@@ -5,9 +5,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 //Pipes
 import { PipesModule } from '../pipes/pipes.module';
+
 
 @NgModule({
     imports:[
@@ -19,12 +20,14 @@ import { PipesModule } from '../pipes/pipes.module';
         NopagefoundComponent,
         BreadcrumsComponent,
         HeaderComponent,
-        SidebarComponent
+        SidebarComponent,
+        ModalUploadComponent
     ],
     exports:[
         BreadcrumsComponent,
         HeaderComponent,
-        SidebarComponent
+        SidebarComponent,
+        ModalUploadComponent
     ]
 })
 export class SharedModule {}

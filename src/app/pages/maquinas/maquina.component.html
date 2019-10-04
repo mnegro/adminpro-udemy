@@ -1,0 +1,72 @@
+<div class="row animated fadeIn">
+  <div class="col-md-6">
+    <div class="card card-body">
+        <h3 class="box-title m-b-0">Maquina: {{ maquina.modelo}}</h3>
+        <div class="row">
+            <div class="col-sm-12col-xs-12">
+                <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarMaquina(f)">
+                    <div class="form-group">
+                        <label>Marca</label>
+                        <input [(ngModel)]="maquina.marca" name="marca" type="text" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Modelo</label>
+                      <input [(ngModel)]="maquina.modelo" name="modelo" type="text" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Serie</label>
+                      <input [(ngModel)]="maquina.serie" name="serie" type="text" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Contador</label>
+                      <input [(ngModel)]="maquina.contador" name="contador" type="text" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Condicion</label>
+                    <select [(ngModel)]="maquina.alquilada"  name="condicion" class="form-control" required>
+                          <option value=true>Alquilada</option>
+                           <option value=false>Cliente</option>
+                    </select>
+                  </div>
+
+                    <div class="form-group">
+                      <label>Precio Por Copia</label>
+                      <input [(ngModel)]="maquina.precioCopia" name="precioCopia" type="text" class="form-control">
+                    </div>
+                  
+                    <div class="form-group">
+                      <label>Descripcion</label>
+                      <input [(ngModel)]="maquina.descripcion" name="descripcion" type="text" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Accesorios</label>
+                      <input [(ngModel)]="maquina.accesorios" name="accesorios" type="text" class="form-control" required>
+                    </div>
+                    
+                    
+                    
+                    <!-- <div class="form-group">
+                        <label>Maquina</label>
+                       <select (change)="cambioHospital($event.target.value)" [(ngModel)]="medico.hospital" name="hospital" class="form-control" required>
+                         <option value="">Seleccione hospital</option>
+                         <option *ngFor="let hospital of hospitales" [value]="hospital._id">
+                           {{ hospital.nombre }}
+                         </option>
+                      </select>
+                    </div> -->
+                 
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                    <a routerLink="/clientes" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

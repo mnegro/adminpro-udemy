@@ -1,0 +1,56 @@
+<div class="row animated fadeIn">
+  <div class="col-md-12">
+    <div class="card card-body">
+        <h3 class="box-title m-b-0">Repuesto: {{ repuesto.codigo }}</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarRepuesto(f)">
+                    <div class="form-group">
+                        <label>Codigo</label>
+                        <input [(ngModel)]="repuesto.codigo" name="codigo" type="text" class="form-control" placeholder="Codigo repuesto">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Tipo</label>
+                      <input [(ngModel)]="repuesto.tipo" name="tipo" type="text" class="form-control" placeholder="Ejemplo: cilindro, engranaje.." required>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Marca</label>
+                    <input [(ngModel)]="repuesto.marca" name="marca" type="text" class="form-control" placeholder="Ingrese la marca del repuesto">
+                </div>
+                <div class="form-group">
+                    <label>Condicion</label>
+                  <select [(ngModel)]="repuesto.condicion"  name="condicion" class="form-control" required>
+                        <option value="nuevo">Nuevo</option>
+                         <option value="usado">Usado</option>
+                  </select>
+                </div>
+                
+
+                    <div class="form-group">
+                      <label>Detalle</label>
+                      <input [(ngModel)]="repuesto.detalle" name="detalle" type="text" class="form-control" placeholder="Detalle del repuesto" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Precio</label>
+                      <input [(ngModel)]="repuesto.precio" name="precio" type="text" class="form-control" placeholder="Precio">
+                    </div>
+                  
+                    <div class="form-group">
+                      <label>Stock</label>
+                      <input [(ngModel)]="repuesto.stock" name="stock" type="number" class="form-control" placeholder="Ingrese stock" required>
+                    </div>
+
+                                   
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                    <a routerLink="/clientes" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

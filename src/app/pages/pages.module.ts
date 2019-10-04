@@ -30,12 +30,30 @@ import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoComponent } from './medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { MaquinasComponent } from './maquinas/maquinas.component';
+import { ReparacionesComponent } from './reparaciones/reparaciones.component';
+import { RepuestosComponent } from './repuestos/repuestos.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { ClienteComponent } from './clientes/cliente.component';
+import { MaquinaComponent } from './maquinas/maquina.component';
+import { ReparacionComponent } from './reparaciones/reparacion.component';
+import { RepuestoComponent } from './repuestos/repuesto.component';
+import { ProveedorComponent } from './proveedores/proveedor.component';
+import { ComprasComponent } from './compras/compras.component';
+import { CompraComponent } from './compras/compra.component';
+import { ModalDetalleComponent } from '../components/modal-detalle/modal-detalle.component';
+import { FacturasComponent } from './facturas/facturas.component';
+import { FacturaComponent } from './facturas/factura.component';
+import { SaldoComponent } from './saldos/saldo.component';
+import { SaldosComponent } from './saldos/saldos.component';
+import { DetallePagoComponent } from './saldos/detalle-pago.component';
 
 
 
 @NgModule({
     declarations:[ 
-        PagesComponent,
+        // PagesComponent,
         DashboardComponent,
         Graficas1Component,
         ProgressComponent,
@@ -46,11 +64,28 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
         RxjsComponent,
         ProfileComponent,
         UsuariosComponent,
-        ModalUploadComponent,
+        // ModalUploadComponent,
         HospitalesComponent,
         MedicosComponent,
         MedicoComponent,
-        BusquedaComponent
+        BusquedaComponent,
+        ClientesComponent,
+        MaquinasComponent,
+        ReparacionesComponent,
+        RepuestosComponent,
+        ProveedoresComponent,
+        ClienteComponent,
+        MaquinaComponent,
+        ReparacionComponent,
+        RepuestoComponent,
+        ProveedorComponent,
+        ComprasComponent,
+        CompraComponent,
+        FacturasComponent,
+        FacturaComponent,
+        SaldoComponent,
+        SaldosComponent,
+        DetallePagoComponent
     ],
     exports: [
         DashboardComponent,

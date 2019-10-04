@@ -1,0 +1,42 @@
+<div class="row animated fadeIn">
+  <div class="col-md-6">
+    <div class="card card-body">
+        <h3 class="box-title m-b-0">Provedor: {{ proveedor.empresa }}</h3>
+        <div class="row">
+            <div class="col-sm-12col-xs-12">
+                <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarProveedor(f)">
+                    <div class="form-group">
+                        <label>Empresa</label>
+                        <input [(ngModel)]="proveedor.empresa" name="empresa" type="text" class="form-control" placeholder="Nombre del proveedor" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Localidad</label>
+                      <input [(ngModel)]="proveedor.localidad" name="localida" type="text" class="form-control" placeholder="Localidad del proveedor">
+                    </div>
+
+                    <div class="form-group">
+                      <label>Cuit</label>
+                      <input [(ngModel)]="proveedor.cuit" name="cuit" type="text" class="form-control" placeholder="Cuit del proveedor" >
+                    </div>
+                  
+                    <div class="form-group">
+                      <label>Direccion</label>
+                      <input [(ngModel)]="proveedor.direccion" name="direccion" type="text" class="form-control" placeholder="Direccion del proveedor" >
+                    </div>
+
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input [(ngModel)]="proveedor.email" name="email" type="email" class="form-control" placeholder="Emaile del proveedor" >
+                    </div>
+                  
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                    <a routerLink="/provedores" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

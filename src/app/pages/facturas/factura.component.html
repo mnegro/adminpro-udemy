@@ -1,0 +1,377 @@
+<div>
+
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body"  *ngIf="clienteSeleccionado==null">
+
+        <input #input (keyup)="buscarCliente( input.value )"  type="text" class="form-control" placeholder="Buscar Cliente...">
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row animated fadeIn" *ngIf="cargando">
+
+  <div class="col-sm-12">
+
+    <div class="alert alert-warning text-center"> 
+      <strong>Cargando</strong>
+      <br>
+      <i class="fa fa-refresh fa-spin fa-2x"></i>
+      <br>
+      <span>Espere por favor</span>
+    </div>
+
+    </div>
+ </div>
+ 
+
+
+<div class="row" *ngIf="clientes.length > 0" >
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+           <h3 class="card-title"> Clientes </h3>
+           <table class="table table-responsive">
+             <thead>
+               <tr>
+                 <th>Nombre</th>
+                 <th>Apellido</th>
+                 <th>Cuit</th>
+                 <th>Direccion</th>
+                 <th>email</th>
+                 <th>Accion</th>
+               </tr>
+             </thead>
+
+             <tbody>
+               <tr *ngFor="let cliente of clientes">
+                 <td>
+                   {{ cliente.nombre }}
+                 </td>
+                 <td> 
+                   {{ cliente.apellido }}
+                 </td>
+                 <td>
+                   {{ cliente.cuit }}
+                 </td>
+                 <td>
+                   {{ cliente.direccion }}
+                 </td>
+                 <td>
+                   {{ cliente.email }}
+                 </td>
+                 <td>
+                  <button (click)="agregarCliente(cliente)" class="btn btn-primary">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                
+               </td>
+             
+              </tr>
+             </tbody>
+
+           </table>
+          </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<div class="row animated fadeIn" *ngIf="clienteSeleccionado" >
+  <div class="col-6">
+    <div class="card">
+      <div class="card-body" *ngIf="maquinasAlquiladas.length >0">
+          <button (click)="mostrarAlq()" class="btn btn-primary">
+              Maquinas alquiladas
+              <i class="fa fa-check"></i>
+          </button>
+         
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-6">
+      <div class="card">
+        <div class="card-body" *ngIf="maquinasCliente.length >0">
+            <button (click)="mostrarCli()" class="btn btn-primary">
+              Maquinas del cliente
+                <i class="fa fa-check"></i>
+              </button>
+        </div>
+      </div>
+  
+    </div>
+
+</div>
+  <!-- ===============================================================================================
+  =================================   MAQUINAS ALQUILADAS  ======================================
+  =============================================================================================== -->
+
+<div class="row animated fadeIn" *ngIf="maquinasAlquiladas.length > 0 && mostrarAlquiladas == true" >
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+           <h3 class="card-title"> Maquinas Alquiladas de: {{ clienteSeleccionado.nombre }} </h3> 
+           <table class="table table-responsive">
+             <thead>
+               <tr>
+                 <th>Modelo</th>
+                 <th>Contador actual</th>
+                 <th>Serie</th>
+                 <th>Contador</th>
+                 <th>Accion</th>
+               </tr>
+             </thead>
+
+             <tbody>
+               <tr *ngFor="let maquina of maquinasAlquiladas">
+                 <td>
+                   {{ maquina.modelo }}
+                 </td>
+                 <td>
+                  <input #contadorActual name="contadorActual" type="text" class="form-control">
+                 </td>
+                 <td> 
+                   {{ maquina.serie }}
+                 </td>
+                 <td>
+                   {{ maquina.contador }}
+                 </td>
+                
+                 <td>
+                  <button (click)="calcularCopias(contadorActual.value, maquina)" class="btn btn-primary">
+                      <i class="fa fa-check"></i>
+                    </button>
+                
+               </td>
+             
+              </tr>
+             </tbody>
+
+           </table>
+          </div>
+    </div>
+
+  </div>
+  </div>
+  <!-- ===============================================================================================
+  ==============================   MAQUINAS DE LOS CLIENTES   ===================================
+  =============================================================================================== -->
+
+  <div class="row" *ngIf="maquinasCliente.length > 0 && mostrarCliente == true" >
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+  
+             <h3 class="card-title"> Maquinas de: {{ clienteSeleccionado.nombre }} </h3> 
+             <table class="table table-responsive">
+               <thead>
+                 <tr>
+                   <th>Modelo</th>
+                   <th>Serie</th>
+                   <th>Contador</th>
+                   <th>Accion</th>
+                 </tr>
+               </thead>
+  
+               <tbody>
+                 <tr *ngFor="let maquina of maquinasCliente">
+                   <td>
+                     {{ maquina.modelo }}
+                   </td>
+                   <td> 
+                     {{ maquina.serie }}
+                   </td>
+                   <td>
+                     {{ maquina.contador }}
+                   </td>
+                  
+                   <td>
+                    <button (click)="verFacturas ( maquina )" class="btn btn-primary">
+                        <i class="fa fa-check"></i>
+                      </button>
+                  
+                 </td>
+               
+                </tr>
+               </tbody>
+  
+             </table>
+            </div>
+      </div>
+  
+    </div>
+
+</div>
+
+ <!-- ===============================================================================================
+  ============================   CALCULAR COPIAS MAQUINAS ALQUILADAS  ===============================
+  =============================================================================================== -->
+
+<div class="row" *ngIf="listadoDetalle.length > 0" >
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+           <h3 class="card-title"> Detalle </h3> 
+           <table class="table table-responsive">
+             <thead>
+               <tr>
+                 <th>Contador actual</th>
+                 <th>Cantidad de copias</th>
+                 <th>Precio</th>
+                 <th>Accion</th>
+               </tr>
+             </thead>
+
+             <tbody>
+               <tr *ngFor="let detalle of listadoDetalle; let i= index">
+                 <td>
+                   {{ detalle.contadorActual }}
+                 </td>
+                 <td> 
+                   {{ detalle.cantidadCopias }}
+                 </td>
+                 <td>
+                   {{ detalle.precio }}
+                 </td>
+                
+                 <td>
+                  <button (click)="eliminarDetalle(i)" class="btn btn-danger">
+                      <i class="fa fa-trash"></i>
+                  </button>
+                
+               </td>
+             
+              </tr>
+             </tbody>
+
+           </table>
+          </div>
+    </div>
+
+  </div>
+
+</div>
+
+ <!-- ===============================================================================================
+  ===========================  FACTURAR REPARACIONES MAQUINAS CLIENTES  =============================
+  =============================================================================================== -->
+
+  <div class="row" *ngIf="aFacturar.length > 0" >
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+  
+             <h3 class="card-title"> REPARACIONES SIN FACTURAR </h3> 
+             <table class="table table-responsive">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Contador</th>
+                  <th>Descripcion</th>
+                  <th>Repuestos</th>
+                  <th>Total</th>
+                  <th>Check</th>
+                </tr>
+              </thead>
+ 
+              <tbody>
+                <tr *ngFor="let reparacion of aFacturar">
+                  <td>
+                    {{ reparacion.fecha | date }}
+                  </td>
+                  <td> 
+                    {{ reparacion.contador }}
+                  </td>
+                  <td>
+                   <button type="button" class="btn btn-outline-info" (click)="verDetalle(reparacion,'detalle')">
+                     Ver Detalle
+                   </button>
+                  </td>
+                  <td>
+                   <button type="button" class="btn btn-outline-info" (click)="verDetalle(reparacion,'repuestos')">
+                     Ver Repuesto
+                   </button>
+                  </td>
+                  <td style="color:#ff0000" >
+                    {{ reparacion.total | currency }}
+                  </td>
+                  <td> 
+                     <button type="button" class="btn btn-outline-info btn-circle" (click)="agregaFactura(reparacion)">
+                        <i class="fa fa-check-circle fa-lg"></i>
+                     </button>
+                  </td>
+  
+             </table>
+            </div>
+      </div>
+  
+    </div>
+  
+  </div>
+
+
+<div>
+<button type="button" (click)="facturar()" class="btn btn-success waves-effect waves-light m-r-10">
+  <i class="fa fa-usd"></i>
+    Facturar
+  </button>
+</div>
+
+</div>
+
+<!-- ===============================================================================================
+  =====================================  FACTURAR MAQUINAS CLIENTES  ===============================
+  =============================================================================================== -->
+
+  <div class="row" *ngIf="preFactura.length > 0" >
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+    
+               <h3 class="card-title"> Detalle </h3> 
+               <table class="table table-responsive">
+                 <thead>
+                   <tr>
+                     <th>Fecha</th>
+                     <th>Monto</th>
+                   </tr>
+                 </thead>
+    
+                 <tbody>
+                   <tr *ngFor="let factura of preFactura; let i= index">
+                     <td>
+                       {{ factura.fecha | date }}
+                     </td>
+                     <td> 
+                       {{ factura.total | currency }}
+                     </td>
+                    
+                     <td>
+                      <button (click)="eliminarItem(i)" class="btn btn-danger">
+                          <i class="fa fa-trash"></i>
+                      </button>
+                    
+                   </td>
+                 
+                  </tr>
+                 </tbody>
+    
+               </table>
+              </div>
+        </div>
+    
+      </div>
+    
+    </div>

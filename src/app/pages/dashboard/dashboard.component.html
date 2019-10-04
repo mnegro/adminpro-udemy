@@ -1,3 +1,57 @@
-<p>
-  dashboard works!
-</p>
+<div class="card-deck">
+
+<div class="card"style="width: 270px" >
+  <img class="card-img-top img-grande" src="../../../assets/images/clientes2.jpeg" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Clientes</h5>
+    <p class="card-text">Desde el panel de mantenimiento de clientes usted puede gestinar todo lo relacionado a estos.</p>
+    <a [routerLink]="['/clientes' ]"  class="btn btn-primary">Ir a Clientes</a>
+  </div>
+
+</div>
+  <div class="card" style="width: 270px" >
+    <img class="card-img-top img-grande" src="../../../assets/images/facturacion.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Facturar</h5>
+      <p class="card-text">Agil sistema para facturar todas las reparaciones, repuestos o medidores de las maquinas</p>
+      <a [routerLink]="['/factura' ]"  class="btn btn-primary">Ir a Facturacion</a>
+    </div>
+  </div>
+
+  <div class="card" style="width: 270px">
+    <img class="card-img-top img-media img-fluid"  src="../../../assets/images/repuestos.jpeg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Repuestos</h5>
+      <p class="card-text">Mantenga actualizado el stock de todo su negocio de manera automatica, sin complicaciones</p>
+      <a [routerLink]="['/repuestos' ]" class="btn btn-primary">Ir a Repuestos</a>
+    </div>
+  </div>
+  
+</div>
+<div class="card-deck">
+
+  <div class="card" style="width: 270px">
+    <img class="card-img-top img-media img-fluid"  src="../../../assets/images/proveedores.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Proveedores</h5>
+      <p class="card-text">Los proveedores y todo lo relativo a ellos esta aqui.</p>
+      <a [routerLink]="['/proveedores' ]"  class="btn btn-primary">Ir a Proveedores</a>
+    </div>
+  </div>
+  <div class="card" style="width: 270px">
+    <img class="card-img-top img-media img-fluid"  src="../../../assets/images/maquinas.jpeg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Maquinas</h5>
+      <p class="card-text">El detalle de todos los equipos los podra visualizar desde este panel</p>
+      <a [routerLink]="['/maquinas' ]"  class="btn btn-primary">Ir a Maquinas</a>
+    </div>
+  </div>
+  <div class="card" style="width: 270px">
+    <img class="card-img-top img-media img-fluid"  src="../../../assets/images/usuarios.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Usuarios</h5>
+      <p class="card-text">Controle quien debe ingresar al sitio y determine que nivel de acceso posee.</p>
+      <a [routerLink]="['/usuarios' ]"  class="btn btn-primary">Ir a Usuarios</a>
+    </div>
+  </div>
+</div>

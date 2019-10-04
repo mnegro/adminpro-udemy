@@ -1,0 +1,101 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+  
+          <input #input (keyup)="buscarMaquina( input.value )" type="text" class="form-control" placeholder="Buscar maquina...">
+  
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+  <div class="row animated fadeIn" *ngIf="cargando">
+  
+    <div class="col-sm-12">
+  
+      <div class="alert alert-warning text-center"> 
+        <strong>Cargando</strong>
+        <br>
+        <i class="fa fa-refresh fa-spin fa-2x"></i>
+        <br>
+        <span>Espere por favor</span>
+      </div>
+  
+      </div>
+   </div>
+  
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+  
+            <div class="text-right">
+                <button [routerLink]="['/maquina', 'nuevo' ]" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+               <i class="fa fa-plus"></i>
+               Cargar Maquina
+             </button>
+             </div> 
+  
+             
+  
+             <h3 class="card-title"> Maquinas Registradas (<small> {{ _maquinaService.totalRegistros }} </small>)</h3>
+             <table class="table table-responsive">
+               <thead>
+                 <tr>
+                   <th>Marca</th>
+                   <th>Modelo</th>
+                   <th></th>
+                 </tr>
+               </thead>
+  
+               <tbody>
+                 <tr *ngFor="let maquina of maquinas">
+                   <td>
+                     {{ maquina.marca }}
+                   </td>
+                   <td>
+                    {{ maquina.modelo }}
+                  </td>
+                
+              
+                   <td>
+                    <button (click)="verDetalle(maquina,'maquina')" class="btn btn-primary">
+                      <i class="fa fa-eye"></i>
+                      Ver mas...
+                    </button>
+                    </td>
+                   <td>
+                      <button [routerLink]="['/maquina', maquina._id ]" class="btn btn-primary">
+                          <i class="fa fa-edit"></i>
+                        </button>
+                   </td> 
+                   <td>
+                      <button [routerLink]="['/reparaciones', maquina._id ]" class="btn btn-info">
+                       <i class="fa fa-wrench"></i>
+                   </button>
+                </td>
+                   <td>    
+                        <button (click)="borrarMaquina( maquina )" class="btn btn-danger">
+                            <i class="fa fa-trash-o"></i>
+                         </button>
+                   </td>
+                </tr>
+               </tbody>
+  
+             </table>
+             <button (click)="cambiarDesde(-7)" class="btn btn-secondary">
+              Anteriores
+            </button>
+            
+  
+            <button (click)="cambiarDesde(7)" class="btn btn-secondary">
+                Siguientes
+            </button>
+            </div>
+      </div>
+  
+    </div>
+  
+  </div>

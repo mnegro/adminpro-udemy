@@ -1,0 +1,107 @@
+<div>
+  
+    <div class="row animated fadeIn" *ngIf="cargando">
+    
+      <div class="col-sm-12">
+    
+        <div class="alert alert-warning text-center"> 
+          <strong>Cargando</strong>
+          <br>
+          <i class="fa fa-refresh fa-spin fa-2x"></i>
+          <br>
+          <span>Espere por favor</span>
+        </div>
+    
+        </div>
+     </div>
+    
+  </div>
+
+    <div class="row" *ngIf="efectivos.length >0">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+    
+               <h3 class="card-title"> Efectivo </h3>
+               <table class="table table-responsive">
+                 <thead>
+                   <tr>
+                     <th>Moneda</th>
+                     <th>Importe Total</th>
+                     <th>Tipo de cambio</th>
+                   </tr>
+                 </thead>
+    
+                 <tbody>
+                   <tr *ngFor="let efectivo of efectivos">
+                     <td>
+                       {{ efectivo.moneda }}
+                     </td>
+                     <td style="color:darkgreen" >
+                        {{ efectivo.importe | currency }}
+                     </td>
+                    <td>
+                      {{ efectivo.tipoCambio }}
+                    </td>
+                  </tr>
+                 </tbody>
+    
+               </table>
+            
+              </div>
+        </div>
+    
+      </div>
+    
+    
+    </div>
+  
+   
+    <div class="row" *ngIf="cheques.length >0">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+      
+                 <h3 class="card-title"> Cheques </h3>
+                 <table class="table table-responsive">
+                   <thead>
+                     <tr>
+                       <th>Fecha</th>
+                       <th>Banco</th>
+                       <th>Numero de cheque</th>
+                       <th>Detalle</th>
+                       <th>Importe</th>
+                     </tr>
+                   </thead>
+      
+                   <tbody>
+                     <tr *ngFor="let cheque of cheques">
+                       <td>
+                         {{ cheque.fecha }}
+                       </td>
+                       <td>
+                          {{ cheque.banco }}
+                       </td>
+                      <td>
+                        {{ cheque.numero }}
+                      </td>
+                      <td>
+                        {{ cheque.detalle }}
+                      </td>
+                      <td style="color:darkgreen">
+                        {{ cheque.importe | currency }}
+                      </td>
+                    </tr>
+                   </tbody>
+      
+                 </table>
+              
+                </div>
+          </div>
+      
+        </div>
+      
+      
+      </div>
+    
+  

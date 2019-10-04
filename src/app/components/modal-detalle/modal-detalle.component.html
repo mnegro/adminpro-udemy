@@ -1,0 +1,387 @@
+<div class="fondo-negro animated fadeIn" [ngClass]="_modaldetalle.oculto">
+
+  <div class="modal" style="display: block" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Repuestos cambiados</h5>
+          <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Detalle</th>
+                <th>Condicion</th>
+                <th>Cantidad</th>
+                
+                
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let reemplazo of _modaldetalle.reparacion.repuestos">
+                <td>
+                  {{ reemplazo.tipo }}
+                </td>
+                <td> 
+                  {{ reemplazo.detalle }}
+                </td>
+                <td> 
+                  {{ reemplazo.condicion }}
+                </td>
+                <td> 
+                    {{ reemplazo.cantidad }}
+                </td>
+                
+               </tr>
+            </tbody>
+
+          </table>
+
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="cerrarModal()" type="button" class="btn btn-secondary">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL DESCRIPCION REPARACION -->
+<div class="fondo-negro animated fadeIn" [ngClass]="_modaldetalle.ocultoDescripcion">
+
+  <div class="modal" style="display: block" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalle reparacion</h5>
+          <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+            <textarea disabled="disabled" [value]="_modaldetalle.reparacion.descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripcion" required></textarea>
+
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="cerrarModal()" type="button" class="btn btn-secondary">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL FACTURACION -->
+<div class="fondo-negro animated fadeIn" [ngClass]="_modaldetalle.ocultoFacturaAlquilada">
+
+    <div class="modal" style="display: block" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Detalle Factura</h5>
+            <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            
+            <table class="table table-responsive">
+              <thead>
+                <tr>
+                  <th>Modelo</th>
+                  <th>Cantidad de copias</th>
+                  <th>Precio por copia</th>
+                  <th>Importe</th>
+                  
+                  
+                  
+                </tr>
+              </thead>
+  
+              <tbody>
+                <tr *ngFor="let detalle of _modaldetalle.factura.detalle">
+                   <td> 
+                        {{ detalle.maquina.modelo }}
+                  </td>
+                  <td>
+                    {{ detalle.cantidadCopias }}
+                  </td>
+                  <td>
+                    {{ detalle.maquina.precioCopia }}
+                  </td>
+                  <td> 
+                    {{ detalle.precio }}
+                  </td>
+                
+                                   
+                 </tr>
+              </tbody>
+  
+            </table>
+  
+          </div>
+          <div class="modal-footer">
+            <button (click)="cerrarModal()" type="button" class="btn btn-secondary">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+                        <!-- MODAL FACTURACION CLIENTE -->
+
+<div class="fondo-negro animated fadeIn" [ngClass]="_modaldetalle.ocultoFacturaCliente">
+
+  <div class="modal" style="display: block" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalle Reparacion Factura</h5>
+          <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          
+  <table class="table table-responsive">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Descripcion</th>
+        <th>Repuestos</th>
+        
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let reparacion of _modaldetalle.reparaciones">
+        <td>
+          {{ reparacion.fecha | date }}
+        </td>
+       
+        <td>
+         <button type="button" class="btn btn-outline-info" (click)="verDetalle(reparacion,'detalle')">
+           Ver Detalle
+         </button>
+        </td>
+        <td>
+         <button type="button" class="btn btn-outline-info" (click)="verDetalle(reparacion,'repuestos')">
+           Ver Repuesto
+         </button>
+        </td>
+    </tbody>
+
+  </table>
+</div>
+<div class="modal-footer">
+  <button (click)="cerrarModal()" type="button" class="btn btn-secondary">Cerrar</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+     <!-- MODAL  CLIENTE -->
+      <div class="fondo-negro animated fadeIn" [ngClass]="_modaldetalle.ocultoCliente">
+        <div class="modal" style="display: block" tabindex="-1" role="dialog">
+         <div class="modal-dialog modal-lg" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title">Detalle Cliente </h5>
+               <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body text-center">
+
+                <table class="table table-responsive">
+                    <thead>
+                      <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Cuit</th>
+                        <th>Direccion</th>
+                        <th>email</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+       
+                    <tbody>
+                      <tr>
+                        <td>
+                          {{ _modaldetalle.cliente.nombre }}
+                        </td>
+                        <td> 
+                          {{ _modaldetalle.cliente.apellido }}
+                        </td>
+                        <td>
+                          {{ _modaldetalle.cliente.cuit }}
+                        </td>
+                        <td>
+                          {{ _modaldetalle.cliente.direccion }}
+                        </td>
+                        <td>
+                          {{ _modaldetalle.cliente.email }}
+                        </td>
+                      </tr>
+                    </tbody>
+       
+                  </table>
+ </div>
+ <div class="modal-footer">
+   <button (click)="cerrarModal()" type="button" class="btn btn-secondary">Cerrar</button>
+ </div>
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+
+      <!-- MODAL  REPUESTO -->
+      <div class="fondo-negro animated fadeIn" [ngClass]="_modaldetalle.ocultoRepuesto">
+        <div class="modal" style="display: block" tabindex="-1" role="dialog">
+         <div class="modal-dialog modal-lg" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title">Repuesto Seleccionado </h5>
+               <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+               </button>
+             </div>
+             <div class="modal-body text-center">
+      
+      <h3 class="card-title">Detalle del repuesto </h3>
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th>Codigo</th>
+            <th>Tipo</th>
+            <th>Marca</th>
+            <th>Condicion</th>
+            <th>Detalle</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              {{ _modaldetalle.repuesto.codigo }}
+            </td>
+            <td>
+             {{ _modaldetalle.repuesto.tipo }}
+           </td>
+           <td>
+             {{ _modaldetalle.repuesto.marca }}
+           </td>
+           <td>
+             {{ _modaldetalle.repuesto.condicion }}
+           </td>
+            <td> 
+              {{ _modaldetalle.repuesto.detalle }}
+            </td>
+            <td>
+              {{ _modaldetalle.repuesto.precio }}
+            </td>
+            <td>
+              {{ _modaldetalle.repuesto.stock }}
+            </td>
+            
+            
+         </tr>
+        </tbody>
+
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button (click)="cerrarModal()" type="button" class="btn btn-secondary">Cerrar</button>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    </div>
+
+          <!-- MODAL  MAQUINA -->
+          <div class="fondo-negro animated fadeIn" [ngClass]="_modaldetalle.ocultoMaquina">
+            <div class="modal" style="display: block" tabindex="-1" role="dialog">
+             <div class="modal-dialog modal-lg" role="document">
+               <div class="modal-content">
+                 <div class="modal-header">
+                   <h5 class="modal-title">Maquina Seleccionada </h5>
+                   <button (click)="cerrarModal()" type="button" class="close"  aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                 </div>
+                 <div class="modal-body text-center">
+          
+          <h3 class="card-title">Detalle de la Maquina </h3>
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                   <th>Marca</th>
+                   <th>Modelo</th>
+                   <th>Serie</th>
+                   <th>Condicion</th>
+                   <th>Precio por Copia</th>
+                   <th>Contador</th>
+                   <th>Cliente</th>
+                <th></th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr>
+                <td>
+                  {{ _modaldetalle.maquina.marca }}
+                </td>
+                <td>
+                 {{ _modaldetalle.maquina.modelo }}
+               </td>
+               <td>
+                 {{ _modaldetalle.maquina.serie }}
+               </td>
+               <td *ngIf="_modaldetalle.maquina.alquilada">
+                  <small style="color: green">Alquilada</small>
+               </td>
+               <td *ngIf="_modaldetalle.maquina.alquilada === false">
+                  <small style="color: blue">Cliente</small>
+               </td>
+                <td> 
+                  {{ _modaldetalle.maquina.precioCopia }}
+                </td>
+                <td>
+                  {{ _modaldetalle.maquina.contador }}
+                </td>
+                <td>
+                  {{ _modaldetalle.maquina.cliente }}
+                </td>
+                
+                
+             </tr>
+            </tbody>
+    
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button (click)="cerrarModal()" type="button" class="btn btn-secondary">Cerrar</button>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        </div>
